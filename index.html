@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ไฟล์เรียน - Secondary 1 Saint Gabriel's College</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Thai:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Kanit', 'Noto Sans Thai', sans-serif;
+      background-color: #f7f6f3;
+      color: #2c2c2c;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      border-bottom: 1px solid #e9e9e7;
+      padding: 32px 0;
+      margin-bottom: 0;
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      padding: 8px;
+      background: #f7f6f3;
+      border: 1px solid #e9e9e7;
+      transition: all 0.2s ease;
+    }
+    
+    .logo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: #f1f1ef;
+    }
+    
+    .header-text {
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 2.2rem;
+      color: #2c2c2c;
+      text-align: center;
+      margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    
+    .header h2 {
+      font-size: 1.1rem;
+      color: #9b9a97;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    /* Stats Card */
+    .stats-container {
+      background: white;
+      border: 1px solid #e9e9e7;
+      border-radius: 8px;
+      margin: 24px 0;
+      padding: 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 16px;
+      background: #f7f6f3;
+      border-radius: 6px;
+      border: 1px solid #e9e9e7;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2c2c2c;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      color: #9b9a97;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Controls */
+    .controls-container {
+      background: white;
+      border: 1px solid #e9e9e7;
+      border-radius: 8px;
+      margin: 24px 0;
+      padding: 24px;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 40px 12px 16px;
+      border: 1px solid #e9e9e7;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: white;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #2c2c2c;
+      box-shadow: 0 0 0 2px rgba(44, 44, 44, 0.1);
+    }
+
+    .search-box i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9b9a97;
+      font-size: 1rem;
+    }
+
+    .filter-select {
+      padding: 12px 16px;
+      border: 1px solid #e9e9e7;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: white;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: #e9e9e7;
+    }
+
+    .clear-btn {
+      padding: 12px 20px;
+      background: #2c2c2c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .clear-btn:hover {
+      background: #1a1a1a;
+    }
+
+    /* Tabs */
+    .tabs {
+      border-bottom: 1px solid #e9e9e7;
+      margin-bottom: 24px;
+      background: white;
+    }
+
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 16px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #9b9a97;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .tab-button:hover {
+      color: #2c2c2c;
+      background: #f7f6f3;
+    }
+
+    .tab-button.active {
+      color: #2c2c2c;
+      border-bottom-color: #2c2c2c;
+      background: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Table */
+    .table-container {
+      background: white;
+      border: 1px solid #e9e9e7;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .files-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .files-table thead {
+      background: #f7f6f3;
+    }
+
+    .files-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 600;
+      color: #2c2c2c;
+      border-bottom: 1px solid #e9e9e7;
+    }
+
+    .files-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e9e9e7;
+      vertical-align: middle;
+    }
+
+    .files-table tbody tr:hover {
+      background: #f7f6f3;
+    }
+
+    .files-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* File Info */
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .file-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .file-icon.pdf { background: #dc3545; }
+    .file-icon.doc { background: #0d6efd; }
+    .file-icon.ppt { background: #fd7e14; }
+    .file-icon.default { background: #6c757d; }
+
+    .file-details h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      margin-bottom: 4px;
+    }
+
+    .file-meta {
+      font-size: 0.85rem;
+      color: #9b9a97;
+      display: flex;
+      gap: 16px;
+    }
+
+    .subject-badge {
+      display: inline-block;
+      background: #2c2c2c;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    .new-badge {
+      display: inline-block;
+      background: #dc3545;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-view {
+      background: #198754;
+      color: white;
+    }
+
+    .btn-view:hover {
+      background: #157347;
+    }
+
+    .btn-download {
+      background: #0d6efd;
+      color: white;
+    }
+
+    .btn-download:hover {
+      background: #0b5ed7;
+    }
+
+    /* Loading States */
+    .loading, .no-results, .error {
+      text-align: center;
+      padding: 40px 20px;
+      color: #9b9a97;
+      font-size: 1rem;
+    }
+
+    .loading i {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #2c2c2c;
+    }
+
+    .error {
+      color: #dc3545;
+    }
+
+    .error i {
+      color: #dc3545;
+    }
+
+    /* Footer */
+    .footer {
+      background: white;
+      border-top: 1px solid #e9e9e7;
+      padding: 24px 0;
+      margin-top: 40px;
+      text-align: center;
+      color: #9b9a97;
+    }
+
+    .footer p {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      font-weight: 600;
+      color: #2c2c2c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 24px 0;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .logo {
+        height: 70px;
+      }
+      
+      .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 4px;
+      }
+      
+      .header h2 {
+        font-size: 1rem;
+      }
+
+      .controls-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .files-table {
+        font-size: 0.9rem;
+      }
+
+      .files-table th,
+      .files-table td {
+        padding: 12px 16px;
+      }
+
+      .file-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 20px 0;
+      }
+      
+      .logo {
+        height: 60px;
+      }
+      
+      .header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .header h2 {
+        font-size: 0.9rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="container">
+      <div class="header-content">
+        <img src="img/logosgg.png" alt="Saint Gabriel's College Logo" class="logo">
+        <div class="header-text">
+          <h1>Secondary 1</h1>
+          <h2>Saint Gabriel's College</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Stats -->
+    <div class="stats-container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" id="total-files">0</div>
+          <div class="stat-label">ไฟล์ทั้งหมด</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="total-subjects">0</div>
+          <div class="stat-label">จำนวนวิชา</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="new-files">0</div>
+          <div class="stat-label">ไฟล์ใหม่ (7 วัน)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="last-update">-</div>
+          <div class="stat-label">อัปเดตล่าสุด</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-container">
+      <div class="controls-grid">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="ค้นหาไฟล์ หรือชื่อวิชา...">
+          <i class="fas fa-search"></i>
+        </div>
+        <select id="subject-filter" class="filter-select">
+          <option value="">ทุกวิชา</option>
+        </select>
+        <button onclick="clearFilters()" class="clear-btn">
+          <i class="fas fa-refresh"></i> ล้าง
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-button active" onclick="switchTab('files')">
+        <i class="fas fa-folder"></i> Download File
+      </button>
+    </div>
+
+    <!-- Files Tab -->
+    <div id="files-tab" class="tab-content active">
+      <div class="main-content">
+        <!-- Files Table -->
+        <div class="table-container">
+          <table class="files-table" id="files-table">
+            <thead>
+              <tr>
+                <th>ชีทสรุปเนื้อหาปลายภาค 1/2568</th>
+                <th style="width: 200px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2" class="loading">
+                  <i class="fas fa-spinner fa-spin"></i> กำลังโหลดข้อมูล...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      
+      <p style="margin-bottom: 4px; color: #2c2c2c; font-weight: 500;">
+          <i class="fas fa-exclamation-circle" style="margin-right: 8px; color: #dc3545;"></i>
+          พบปัญหาติดต่อ Facebook Secondary 1
+        </p>
+        <p>
+          <a href="https://www.facebook.com/profile.php?id=61576399571853" 
+             target="_blank" 
+             style="color: #1877f2; text-decoration: none; font-weight: 500;">
+            <i class="fab fa-facebook" style="margin-right: 8px;"></i>
+            https://www.facebook.com/profile.php?id=61576399571853
+          </a>
+        </p>
+      <p class="copyright">Copyright 2025 Secondary 1 Saint Gabriel's College</p>
+      <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e9e9e7;">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // CONFIG
+    const CONFIG = {
+      apiKey: 'AIzaSyD0vZQpRQnqvNXHasFDCvba2tu3-KpXhMw',
+      files: {
+        folderId: '1bD3EsRjLWTPeLzutc3iyW6iu0BLwxrz3',
+      }
+    };
+
+    let allFiles = [];
+    let filteredFiles = [];
+
+    // Tab switching
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabName + '-tab').classList.add('active');
+      event.target.classList.add('active');
+
+      if (tabName === 'files' && allFiles.length === 0) {
+        loadFilesData();
+      }
+    }
+
+    // Utility Functions
+    function convertToGoogleDriveDownloadLink(fileId) {
+      return `https://drive.google.com/uc?export=download&id=${fileId}`;
+    }
+
+    function parseFileNameMetadata(fileName) {
+      const nameParts = fileName.split('_');
+      let subject = 'ทั่วไป';
+      if (nameParts.length >= 1) {
+        subject = nameParts[0];
+      }
+      return { subject };
+    }
+
+    function getFileExtension(fileName) {
+      return fileName.split('.').pop().toLowerCase();
+    }
+
+    function getFileIcon(fileName) {
+      const ext = getFileExtension(fileName);
+      switch (ext) {
+        case 'pdf': return { class: 'pdf', icon: 'PDF' };
+        case 'doc':
+        case 'docx': return { class: 'doc', icon: 'DOC' };
+        case 'ppt':
+        case 'pptx': return { class: 'ppt', icon: 'PPT' };
+        default: return { class: 'default', icon: 'FILE' };
+      }
+    }
+
+    function formatFileSize(bytes) {
+      if (!bytes) return 'ไม่ทราบ';
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(1024));
+      return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat('th-TH', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }).format(date);
+    }
+
+    function isNewFile(date) {
+      const now = new Date();
+      const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      return date > weekAgo;
+    }
+
+    // Data Loading
+    async function loadFilesData() {
+      showLoading();
+
+      const url = `https://www.googleapis.com/drive/v3/files?q='${CONFIG.files.folderId}'+in+parents&key=${CONFIG.apiKey}&fields=files(id,name,mimeType,modifiedTime,size,webViewLink)`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.error) throw new Error(data.error.message);
+        if (!data.files || data.files.length === 0) throw new Error('ไม่พบข้อมูลในโฟลเดอร์');
+
+        allFiles = data.files
+          .filter(file => file.mimeType !== 'application/vnd.google-apps.folder')
+          .map(file => {
+            const metadata = parseFileNameMetadata(file.name);
+            const modifiedTime = new Date(file.modifiedTime);
+            return {
+              id: file.id,
+              name: file.name,
+              subject: metadata.subject,
+              viewLink: file.webViewLink,
+              downloadLink: convertToGoogleDriveDownloadLink(file.id),
+              modifiedTime: modifiedTime,
+              size: file.size,
+              isNew: isNewFile(modifiedTime),
+              fileIcon: getFileIcon(file.name)
+            };
+          })
+          .sort((a, b) => b.modifiedTime - a.modifiedTime);
+
+        filteredFiles = [...allFiles];
+        updateStats();
+        updateSubjectFilter();
+        renderFilesTable();
+
+      } catch (err) {
+        console.error(err);
+        showError('โหลดข้อมูลไฟล์ล้มเหลว: ' + err.message);
+      }
+    }
+
+    // Stats Update
+    function updateStats() {
+      const subjects = [...new Set(allFiles.map(f => f.subject))];
+      const newFilesCount = allFiles.filter(f => f.isNew).length;
+      const lastUpdate = allFiles.length > 0 ? allFiles[0].modifiedTime : null;
+
+      document.getElementById('total-files').textContent = allFiles.length;
+      document.getElementById('total-subjects').textContent = subjects.length;
+      document.getElementById('new-files').textContent = newFilesCount;
+      document.getElementById('last-update').textContent = lastUpdate ? formatDate(lastUpdate) : '-';
+    }
+
+    // Subject Filter Update
+    function updateSubjectFilter() {
+      const subjects = [...new Set(allFiles.map(f => f.subject))].sort();
+      const select = document.getElementById('subject-filter');
+      
+      // Clear existing options (except first one)
+      select.innerHTML = '<option value="">ทุกวิชา</option>';
+      
+      subjects.forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject;
+        option.textContent = subject;
+        select.appendChild(option);
+      });
+    }
+
+    // Filtering
+    function applyFilters() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const selectedSubject = document.getElementById('subject-filter').value;
+
+      filteredFiles = allFiles.filter(file => {
+        const matchesSearch = !searchTerm || 
+          file.name.toLowerCase().includes(searchTerm) ||
+          file.subject.toLowerCase().includes(searchTerm);
+        
+        const matchesSubject = !selectedSubject || file.subject === selectedSubject;
+
+        return matchesSearch && matchesSubject;
+      });
+
+      renderFilesTable();
+    }
+
+    function clearFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('subject-filter').value = '';
+      filteredFiles = [...allFiles];
+      renderFilesTable();
+    }
+
+    // แสดงผลตารางไฟล์
+    function renderFilesTable() {
+      const tbody = document.querySelector('#files-table tbody');
+
+      if (!filteredFiles.length) {
+        tbody.innerHTML = `<tr><td colspan="2" class="no-results">
+            <i class="fas fa-search"></i> ไม่พบไฟล์ที่ตรงกับการค้นหา
+        </td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filteredFiles.map(f => `
+        <tr>
+          <td>
+            <div class="file-info">
+              <div class="file-icon ${f.fileIcon.class}">${f.fileIcon.icon}</div>
+              <div class="file-details">
+                <h4>
+                  ${f.name}
+                  ${f.isNew ? '<span class="new-badge">ใหม่!</span>' : ''}
+                  
+                </h4>
+                <div class="file-meta">
+                  <span>${formatDate(f.modifiedTime)}</span>
+                  <span>${formatFileSize(f.size)}</span>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            ${generateActionButtonsForDrive(f)}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function generateActionButtonsForDrive(file) {
+      return `
+        <div class="action-buttons">
+          <a href="${file.viewLink}" target="_blank" class="btn btn-view" title="ดูไฟล์">
+            <i class="fas fa-eye"></i> ดู
+          </a>
+          <a href="${file.downloadLink}" target="_blank" class="btn btn-download" title="ดาวน์โหลดไฟล์">
+            <i class="fas fa-download"></i> ดาวน์โหลด
+          </a>
+        </div>
+      `;
+    }
+
+    // Utility
+    function showLoading() {
+      const tbody = document.querySelector('#files-table tbody');
+      tbody.innerHTML = `<tr><td colspan="2" class="loading">
+        <i class="fas fa-spinner fa-spin"></i> กำลังโหลดข้อมูล...
+      </td></tr>`;
+    }
+
+    function showError(msg) {
+      const tbody = document.querySelector('#files-table tbody');
+      tbody.innerHTML = `<tr><td colspan="2" class="error">
+        <i class="fas fa-exclamation-triangle"></i> ${msg}
+      </td></tr>`;
+    }
+
+    // Event Listeners
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+    document.getElementById('subject-filter').addEventListener('change', applyFilters);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFilesData();
+    });
+  </script>
+</body>
+</html>

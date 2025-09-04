@@ -1,0 +1,699 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     font-family: "Noto Sans Thai", sans-serif;
+    line-height: 2;
+    color: #37352f;
+    background: #fafafa;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header - Notion style */
+.header {
+    background: white;
+    border-bottom: 1px solid #e9e9e7;
+    padding: 24px 0;
+    margin-bottom: 0;
+}
+
+.header h1 {
+    font-size: 2rem;
+    color: #2c2c2c;
+    text-align: center;
+    margin-bottom: 4px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.header h2 {
+    font-size: 1rem;
+    color: #9b9a97;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Tabs - Notion style */
+.tabs {
+    display: flex;
+    background: white;
+    border-bottom: 1px solid #e9e9e7;
+    margin-bottom: 0;
+    padding: 0 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 16px 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #787774;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+.tab-button.active {
+    color: #2c2c2c;
+    border-bottom-color: #2c2c2c;
+    background: transparent;
+}
+
+.tab-button:hover:not(.active) {
+    color: #2c2c2c;
+    background: rgba(55, 53, 47, 0.03);
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    min-height: 70vh;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Main Content - Notion page style */
+.main-content {
+    background: white;
+    padding: 32px 40px;
+    margin-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Filters - Notion database filter style */
+.filters {
+    background: #f7f6f3;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    border: 1px solid #e9e9e7;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.filter-row:last-child {
+    margin-bottom: 0;
+}
+
+.filter-label {
+    font-weight: 500;
+    color: #37352f;
+    font-size: 13px;
+    min-width: 80px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #e9e9e7;
+    border-radius: 6px;
+    background: white;
+    font-size: 13px;
+    min-width: 150px;
+    color: #37352f;
+    transition: all 0.2s ease;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #2383e2;
+    box-shadow: 0 0 0 2px rgba(35, 131, 226, 0.2);
+}
+
+.filter-button {
+    padding: 8px 16px;
+    background: #2383e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter-button:hover {
+    background: #1a73cc;
+    transform: translateY(-1px);
+}
+
+.refresh-button {
+    padding: 8px 16px;
+    background: white;
+    color: #37352f;
+    border: 1px solid #e9e9e7;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.refresh-button:hover {
+    background: #f7f6f3;
+    transform: translateY(-1px);
+}
+
+/* Table - Notion database style */
+.table-container {
+    overflow-x: auto;
+    border-radius: 6px;
+    border: 1px solid #e9e9e7;
+    background: white;
+}
+
+.files-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.files-table th {
+    background: #f7f6f3;
+    color: #37352f;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid #e9e9e7;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.files-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f1ef;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.files-table tr:hover {
+    background: #f7f6f3;
+}
+
+.files-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Schedule Table - Notion calendar style */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.schedule-table th {
+    background: #f7f6f3;
+    color: #37352f;
+    padding: 16px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid #e9e9e7;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.schedule-table td {
+    padding: 16px 12px;
+    border: 1px solid #e9e9e7;
+    font-size: 13px;
+    text-align: center;
+    vertical-align: middle;
+    min-height: 60px;
+    position: relative;
+}
+
+.schedule-table tr:hover {
+    background: #f7f6f3;
+}
+
+.time-slot {
+    font-weight: 600;
+    color: #37352f;
+    background: #f7f6f3 !important;
+    font-size: 12px;
+}
+
+.subject-cell {
+    background: #e7f3ff;
+    color: #1a73cc;
+    font-weight: 500;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 8px;
+    border: 1px solid #cce7ff;
+}
+
+.break-cell {
+    background: #fff8e1;
+    color: #b8860b;
+    font-style: italic;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 8px;
+    border: 1px solid #ffe0b3;
+}
+
+/* Subject styling */
+.subject-name {
+    font-weight: 600;
+    color: #37352f;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subject-code {
+    font-size: 11px;
+    color: #9b9a97;
+    font-weight: 400;
+}
+
+.teacher-name {
+    color: #6b6966;
+}
+
+/* Action buttons - Notion style */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: 1px solid #e9e9e7;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: white;
+    color: #37352f;
+}
+
+.btn:hover {
+    background: #f7f6f3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-view {
+    color: #2383e2;
+    border-color: #2383e2;
+}
+
+.btn-view:hover {
+    background: #e7f3ff;
+    color: #1a73cc;
+}
+
+.btn-download {
+    color: #9b51e0;
+    border-color: #9b51e0;
+}
+
+.btn-download:hover {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+/* Status badges - Notion property style */
+.status-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.status-new {
+    background: #ffe2e5;
+    color: #d63384;
+}
+
+.status-updated {
+    background: #fff4e6;
+    color: #fd7e14;
+}
+
+.status-active {
+    background: #e6f7ff;
+    color: #1890ff;
+}
+
+/* Loading/Error states - Notion style */
+.loading, .error, .no-results {
+    text-align: center;
+    padding: 48px 32px;
+    color: #9b9a97;
+    font-size: 14px;
+}
+
+.loading {
+    background: transparent;
+}
+
+.loading .fas {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.error {
+    color: #d63384;
+    background: #ffe2e5;
+    border-radius: 6px;
+    border: 1px solid #f8d7da;
+}
+
+.no-results {
+    background: transparent;
+    color: #9b9a97;
+}
+
+.no-results .fas {
+    font-size: 24px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+/* Footer - Notion style */
+.footer {
+    background: #fafafa;
+    padding: 32px 0;
+    text-align: center;
+    border-top: 1px solid #e9e9e7;
+    margin-top: 0;
+}
+
+.footer p {
+    margin-bottom: 8px;
+    color: #9b9a97;
+    font-size: 12px;
+}
+
+.footer .copyright {
+    font-weight: 500;
+    color: #6b6966;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .header {
+        padding: 20px 0;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header h2 {
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        padding: 24px 20px;
+    }
+    
+    .filters {
+        padding: 16px;
+    }
+    
+    .filter-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .filter-label {
+        min-width: auto;
+    }
+    
+    .filter-select {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .filter-button, .refresh-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .tabs {
+        padding: 0 16px;
+    }
+    
+    .tab-button {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    /* Mobile table - Notion mobile style */
+    .files-table,
+    .files-table thead,
+    .files-table tbody,
+    .files-table th,
+    .files-table td,
+    .files-table tr {
+        display: block;
+    }
+    
+    .files-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .files-table tr {
+        border: 1px solid #e9e9e7;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        padding: 16px;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .files-table td {
+        border: none;
+        padding: 8px 0;
+        position: relative;
+        padding-left: 35%;
+    }
+    
+    .files-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 30%;
+        font-weight: 600;
+        color: #37352f;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+    
+    .action-buttons {
+        justify-content: flex-start;
+    }
+    
+    .schedule-table {
+        font-size: 12px;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 8px 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header h2 {
+        font-size: 0.8rem;
+    }
+    
+    .main-content {
+        padding: 16px;
+    }
+    
+    .btn {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    
+    .schedule-table {
+        font-size: 11px;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 6px 2px;
+    }
+}
+
+/* Scrollbar styling - Notion style */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1ef;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d0ce;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8b7b4;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Focus styles */
+*:focus {
+    outline: 2px solid #2383e2;
+    outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+    background: #2383e2;
+    color: white;
+}
+
+.subject-cell {
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-family: 'Kanit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+/* M.1/3 – ส้มพีช */
+.room-m13 {
+  background-color: #ffe0c0;
+  border-color: #ffa552;
+  color: #9c4a00;
+}
+
+/* M.1/4 – เหลืองวานิลลา */
+.room-m14 {
+  background-color: #fff4b8;
+  border-color: #ffb400;
+  color: #8a6d00;
+}
+
+/* M.1/5 – เขียวมินต์ */
+.room-m15 {
+  background-color: #cbf7b6;
+  border-color: #5fd146;
+  color: #2d7d1d;
+}
+
+/* M.1/6 – ฟ้ามิ้นต์ */
+.room-m16 {
+  background-color: #ccfbf4;
+  border-color: #38d9c3;
+  color: #038675;
+}
+
+/* M.1/7 – ฟ้าม่วงลาเวนเดอร์ */
+.room-m17 {
+  background-color: #d7d4ff;
+  border-color: #8278ff;
+  color: #4235b6;
+}
+
+/* M.1/8 – ชมพูอ่อน */
+.room-m18 {
+  background-color: #f4d1fb;
+  border-color: #d162e6;
+  color: #951cae;
+}
+
+/* M.1/9 – เทาอมม่วง */
+.room-m19 {
+  background-color: #f5f5fb;
+  border-color: #c7c8d9;
+  color: #6d6e7c;
+}
+
+/* ช่องว่าง */
+.empty-cell {
+  background-color: #f9f9f9;
+  border: 1px dashed #d1d1d1;
+  color: #aaa;
+  font-style: italic;
+}
+
+.today-badge {
+  background-color: #ef4444; /* แดงน่ารัก */
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  display: inline-block;
+  line-height: 1;
+}
